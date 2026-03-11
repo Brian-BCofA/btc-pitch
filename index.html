@@ -4,17 +4,57 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BariTotalCare | The Complete Solution for Bariatric Program Management</title>
-  <meta name="description" content="BariTotalCare by Bariatric Centers of America — BariLead, BariNav, BariSuccess. The integrated bariatric CRM platform." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2300D2B4'/><text x='8' y='24' font-size='22' font-weight='bold' fill='%230B1629'>B</text></svg>" />
+  <meta
+    name="description"
+    content="BariTotalCare by Bariatric Centers of America. From the first ad click to long-term follow-up, one integrated bariatric CRM platform."
+  />
+  <link rel="icon" type="image/png" href="./brand-mark.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body, #root { min-height: 100vh; }
-    body { background: #0B1629; }
-    @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-18px) scale(1.03); } }
-    @keyframes slide-up { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    :root {
+      --denim: #323f4e;
+      --hunter: #27423e;
+      --teal: #447073;
+      --ocean: #7dbdb6;
+      --mist: #a8c7ca;
+      --coral: #dd5b57;
+      --midnight: #1c1e1d;
+      --charcoal: #3d3d3d;
+      --dove: #d8dadb;
+      --stone: #ededed;
+      --white: #ffffff;
+      --display: "Canela", "Cormorant Garamond", serif;
+      --body: "Euclid", "Euclid Circular A", "Manrope", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(125, 189, 182, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(221, 91, 87, 0.12), transparent 26%),
+        linear-gradient(180deg, #f8f6f2 0%, #f0ece5 100%);
+      color: var(--charcoal);
+      font-family: var(--body);
+    }
+
+    button { font: inherit; }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(22px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -14px, 0); }
+    }
   </style>
 </head>
 <body>
@@ -23,397 +63,1002 @@
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
   <script type="text/babel">
-    const { useState, useEffect } = React;
+    const { useEffect, useState } = React;
 
     const COLORS = {
-      bg: "#0B1629", bgLight: "#0F1D35", bgCard: "#132240",
-      teal: "#00D2B4", tealDark: "#00A891", tealGlow: "rgba(0, 210, 180, 0.15)",
-      blue: "#2B7CFF", blueGlow: "rgba(43, 124, 255, 0.12)",
-      coral: "#FF6B8A", coralGlow: "rgba(255, 107, 138, 0.12)",
-      text: "#E4EAF5", textMuted: "#8A9BBF", textDim: "#5A6D8F",
-      border: "rgba(255,255,255,0.07)", borderHover: "rgba(255,255,255,0.14)",
+      denim: "#323F4E",
+      hunter: "#27423E",
+      teal: "#447073",
+      ocean: "#7DBDB6",
+      mist: "#A8C7CA",
+      coral: "#DD5B57",
+      midnight: "#1C1E1D",
+      charcoal: "#3D3D3D",
+      dove: "#D8DADB",
+      stone: "#EDEDED",
+      white: "#FFFFFF",
+      shell: "#F8F6F2",
+      cardShadow: "0 24px 60px rgba(39, 66, 62, 0.08)",
     };
 
-    /* ─── SVG Logo Components ─── */
-    const LogoFull = ({ height = 44 }) => {
-      const scale = height / 48;
-      return (
-        <svg width={280 * scale} height={height} viewBox="0 0 280 48" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="24" r="17" fill="none" stroke={COLORS.teal} strokeWidth="2.5" />
-          <path d="M12.5 17h7.5c2.5 0 4.2 1.5 4.2 3.4 0 1.6-1.2 2.8-3 3.1 2 .3 3.5 1.7 3.5 3.6 0 2.2-1.9 3.9-4.5 3.9H12.5V17z" fill={COLORS.teal} />
-          <path d="M15.2 19.4v3.6h4c1.3 0 2-.7 2-1.8s-.7-1.8-2-1.8h-4zm0 5.5v4h4.5c1.4 0 2.2-.8 2.2-2s-.8-2-2.2-2h-4.5z" fill={COLORS.bg} />
-          <text x="46" y="32" fontFamily="'Instrument Sans','DM Sans','Segoe UI',system-ui,sans-serif" fontSize="27" fontWeight="700" letterSpacing="-0.02em">
-            <tspan fill={COLORS.teal}>Bari</tspan>
-            <tspan fill={COLORS.text}>Total</tspan>
-            <tspan fill={COLORS.teal}>Care</tspan>
-          </text>
-        </svg>
-      );
-    };
+    const FONT_DISPLAY = '"Canela", "Cormorant Garamond", serif';
+    const FONT_BODY = '"Euclid", "Euclid Circular A", "Manrope", sans-serif';
+    const STATS_NOTE = "Illustrative ROI and workflow benchmarks shown for positioning; validate against your own program data.";
 
-    const LogoNav = ({ height = 28 }) => {
-      const scale = height / 32;
-      return (
-        <svg width={200 * scale} height={height} viewBox="0 0 200 32" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="14" cy="16" r="11.5" fill="none" stroke={COLORS.teal} strokeWidth="2" />
-          <path d="M9 11h5.5c1.8 0 3 1.1 3 2.4 0 1.2-.9 2-2.2 2.3 1.5.2 2.5 1.3 2.5 2.6 0 1.6-1.4 2.8-3.2 2.8H9V11z" fill={COLORS.teal} />
-          <path d="M11.2 13v2.6h3c1 0 1.4-.5 1.4-1.3s-.5-1.3-1.4-1.3h-3zm0 4v3h3.3c1 0 1.6-.6 1.6-1.5s-.6-1.5-1.6-1.5h-3.3z" fill={COLORS.bg} />
-          <text x="32" y="21.5" fontFamily="'Instrument Sans','DM Sans','Segoe UI',system-ui,sans-serif" fontSize="18" fontWeight="700" letterSpacing="-0.02em">
-            <tspan fill={COLORS.teal}>Bari</tspan>
-            <tspan fill={COLORS.text}>Total</tspan>
-            <tspan fill={COLORS.teal}>Care</tspan>
-          </text>
-        </svg>
-      );
-    };
-
-    /* ─── Product Data ─── */
     const PRODUCTS = [
       {
-        id: "lead", name: "BariLead", tagline: "Drive More Traffic Through Digital",
-        icon: "📡", color: COLORS.teal, glowColor: COLORS.tealGlow, bgAccent: "rgba(0,210,180,0.06)",
-        phase: "ATTRACT", phaseNum: "01",
+        id: "lead",
+        name: "BariLead",
+        tagline: "Drive More Traffic Through Digital",
+        phase: "Attract",
+        phaseNum: "01",
+        accent: COLORS.hunter,
+        accentSoft: "rgba(39, 66, 62, 0.09)",
+        accentGlow: "rgba(39, 66, 62, 0.18)",
         stats: [
-          { value: "3–5×", label: "increase in qualified leads" },
+          { value: "3-5x", label: "increase in qualified leads" },
           { value: "40%", label: "lower cost per acquisition" },
           { value: "24/7", label: "automated lead capture" },
         ],
+        painPoints: [
+          "Marketing spend is hard to tie back to actual consult volume.",
+          "Referrals still arrive by fax, phone, and disconnected intake channels.",
+          "New leads sit untouched while staff manually triage who should call back.",
+          "Your team is doing qualification and nurture work by hand.",
+        ],
+        solution:
+          "BariLead connects your paid advertising, website scheduling, and referral sources directly to your CRM. Every lead is captured, qualified, and nurtured automatically with AI-powered intake calls, personalized campaigns, and marketing automation that works around the clock.",
         features: [
-          "Meta Ads integration with automated lead routing",
+          "Paid advertising integration with automated lead routing",
           "Conversational AI for patient intake calls",
-          "AI-generated email & SMS campaign automation",
+          "AI-generated email and SMS campaign automation",
           "Smart scheduling synced to BariNav",
           "Physician referral portal",
-          "Campaign ROI tracking by source & channel",
+          "Campaign ROI tracking by source and channel",
         ],
-        pain: "You're spending on ads with no idea what converts. Referrals arrive via fax. New leads sit in an inbox for days. Your staff is doing intake by hand.",
-        solve: "BariLead connects your Meta advertising, website scheduling, and referral sources directly to your CRM. Every lead is captured, qualified, and nurtured automatically — with AI-powered intake calls, personalized campaigns, and marketing automation that works around the clock.",
       },
       {
-        id: "nav", name: "BariNav", tagline: "Enhance the Patient Experience",
-        icon: "🧭", color: COLORS.blue, glowColor: COLORS.blueGlow, bgAccent: "rgba(43,124,255,0.06)",
-        phase: "CONVERT", phaseNum: "02",
+        id: "nav",
+        name: "BariNav",
+        tagline: "Enhance the Patient Experience",
+        phase: "Convert",
+        phaseNum: "02",
+        accent: COLORS.teal,
+        accentSoft: "rgba(68, 112, 115, 0.09)",
+        accentGlow: "rgba(68, 112, 115, 0.18)",
         stats: [
           { value: "60%", label: "faster intake processing" },
-          { value: "92%", label: "insurance approval rate" },
-          { value: "2×", label: "staff productivity gains" },
+          { value: "65%", label: "improvement in attended to surgery ratios" },
+          { value: "2x", label: "staff productivity gains" },
         ],
+        painPoints: [
+          "Your coordinators are buried in spreadsheets and sticky notes.",
+          "Patients get lost in the process.",
+          "Following up on pre-op requirements is tedious and time-consuming.",
+          "Manual tasks pile up with no automation to simplify the workflow.",
+        ],
+        solution:
+          "BariNav is the CRM purpose-built for bariatric care. From the first consult through surgery, medical weight loss, and nutrition therapy, it tracks milestones, manages tasks, and ensures compliance, giving your team complete oversight of each patient’s journey.",
         features: [
-          "Prospect → Patient → Program workflow engine",
-          "Insurance verification & authorization tracking",
-          "Surgery scheduling & pre-op milestone tracking",
-          "Medical weight loss & nutrition therapy pathways",
-          "Medication management & prescription tracking",
-          "COE accreditation tracking & compliance",
+          "Prospect to patient to program workflow engine",
+          "Insurance verification and pre-op requirement assignment",
+          "Automated patient messaging by email and SMS",
+          "Customizable medical, surgical, and nutritional program pathways",
+          "Medication management and prescription tracking",
+          "COE accreditation tracking and compliance",
         ],
-        pain: "Your coordinators are buried in spreadsheets and sticky notes. Patients get lost between consult and surgery. Insurance denials pile up. Accreditation prep is a nightmare.",
-        solve: "BariNav is the customizable patient tracking CRM purpose-built for bariatric workflows. From first consult through surgery, medical weight loss, and nutrition therapy — every milestone tracked, every task assigned, every compliance requirement met.",
       },
       {
-        id: "success", name: "BariSuccess", tagline: "The Future Delivery of Post-Op Care",
-        icon: "📊", color: COLORS.coral, glowColor: COLORS.coralGlow, bgAccent: "rgba(255,107,138,0.06)",
-        phase: "RETAIN", phaseNum: "03",
+        id: "success",
+        name: "BariSuccess",
+        tagline: "The Future Delivery of Post-Op Care",
+        phase: "Retain",
+        phaseNum: "03",
+        accent: COLORS.coral,
+        accentSoft: "rgba(221, 91, 87, 0.09)",
+        accentGlow: "rgba(221, 91, 87, 0.18)",
         stats: [
           { value: "85%", label: "long-term patient engagement" },
           { value: "Real-time", label: "biometric data capture" },
-          { value: "3×", label: "improvement in follow-up rates" },
+          { value: "3x", label: "improvement in follow-up rates" },
         ],
+        painPoints: [
+          "Post-op patients vanish after 90 days.",
+          "Follow-up visits and progress go untracked.",
+          "Patient success and weight outcomes are unknown.",
+          "Additional revenue opportunities are left on the table.",
+        ],
+        solution:
+          "BariSuccess equips every patient with a connected scale that updates weight, BMI, and body composition data directly in BariTotalCare, giving your team a clear view of patient progress. Your team sees trends in real time, automated workflows re-engage patients before problems escalate, and outcomes data strengthens your payer negotiations.",
         features: [
-          "Connected smart scale → CRM data pipeline",
-          "Weight, BMI, & muscle mass trend dashboards",
-          "Automated check-in & re-engagement workflows",
-          "Remote patient monitoring (RPM) billing support",
-          "RVU Wallet for tracking provider productivity",
+          "Connected smart scale to CRM data pipeline",
+          "Weight, BMI, and body composition trend dashboards",
+          "Automated check-in and re-engagement workflows",
+          "Remote patient monitoring billing support",
+          "RVU wallet for tracking provider productivity",
           "Outcomes reporting for payer negotiations",
         ],
-        pain: "Post-op patients vanish after 90 days. You can't prove outcomes to insurers. Readmissions go untracked. RPM revenue is left on the table.",
-        solve: "BariSuccess equips every patient with a connected scale that feeds weight, BMI, and body composition data directly into Bari Total Care. Your team sees trends in real time, automated workflows re-engage patients before problems escalate, and outcomes data strengthens your payer negotiations.",
       },
     ];
 
-    /* ─── Main App ─── */
+    function BrandMark({ size = 46 }) {
+      return (
+        <img
+          src="./brand-mark.png"
+          alt="Bariatric Centers of America"
+          style={{
+            width: size,
+            height: size,
+            objectFit: "contain",
+            flexShrink: 0,
+          }}
+        />
+      );
+    }
+
+    function BrandWordmark({ compact = false }) {
+      return (
+        <div style={{ display: "flex", alignItems: "center", gap: compact ? 12 : 16 }}>
+          <BrandMark size={compact ? 42 : 56} />
+          <div>
+            <div
+              style={{
+                fontFamily: FONT_DISPLAY,
+                fontSize: compact ? 26 : 38,
+                lineHeight: 0.95,
+                letterSpacing: "-0.04em",
+                color: COLORS.hunter,
+              }}
+            >
+              BariTotalCare
+            </div>
+            <div
+              style={{
+                marginTop: 6,
+                fontSize: compact ? 11 : 12,
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: COLORS.teal,
+                fontWeight: 700,
+              }}
+            >
+              Bariatric CRM Platform
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     function App() {
-      const [activeProduct, setActiveProduct] = useState(null);
       const [view, setView] = useState("hero");
+      const [activeProduct, setActiveProduct] = useState(null);
       const [animateIn, setAnimateIn] = useState(false);
+      const [width, setWidth] = useState(window.innerWidth);
 
-      useEffect(() => { setTimeout(() => setAnimateIn(true), 100); }, []);
+      useEffect(() => {
+        const timeoutId = window.setTimeout(() => setAnimateIn(true), 100);
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        return () => {
+          window.clearTimeout(timeoutId);
+          window.removeEventListener("resize", handleResize);
+        };
+      }, []);
 
-      const navigateTo = (newView, product = null) => {
+      const isTablet = width < 1100;
+      const isMobile = width < 780;
+
+      const navigateTo = (nextView, product = null) => {
         setAnimateIn(false);
-        setTimeout(() => { setView(newView); setActiveProduct(product); setAnimateIn(true); }, 350);
+        window.setTimeout(() => {
+          setView(nextView);
+          setActiveProduct(product);
+          setAnimateIn(true);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 220);
       };
 
+      const active = activeProduct || PRODUCTS[0];
+
       return (
-        <div style={{
-          minHeight: "100vh", background: COLORS.bg, color: COLORS.text,
-          fontFamily: "'Instrument Sans', 'DM Sans', system-ui, sans-serif",
-          position: "relative", overflow: "hidden",
-        }}>
-          {/* Ambient background */}
-          <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }}>
-            <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: `radial-gradient(circle, ${COLORS.teal}12, transparent 70%)`, top: "-10%", left: "-5%", animation: "float 8s ease-in-out infinite" }} />
-            <div style={{ position: "absolute", width: 400, height: 400, borderRadius: "50%", background: `radial-gradient(circle, ${COLORS.blue}10, transparent 70%)`, top: "20%", right: "-8%", animation: "float 10s ease-in-out infinite 2s" }} />
-            <div style={{ position: "absolute", width: 350, height: 350, borderRadius: "50%", background: `radial-gradient(circle, ${COLORS.coral}08, transparent 70%)`, bottom: "5%", left: "30%", animation: "float 9s ease-in-out infinite 4s" }} />
-            <div style={{ position: "absolute", inset: 0, opacity: 0.02, backgroundImage: `linear-gradient(${COLORS.teal} 1px, transparent 1px), linear-gradient(90deg, ${COLORS.teal} 1px, transparent 1px)`, backgroundSize: "60px 60px" }} />
+        <div
+          style={{
+            minHeight: "100vh",
+            color: COLORS.charcoal,
+            fontFamily: FONT_BODY,
+            position: "relative",
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" }}>
+            <div
+              style={{
+                position: "absolute",
+                width: 420,
+                height: 420,
+                top: -120,
+                left: -90,
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(125, 189, 182, 0.34), transparent 70%)",
+                animation: "drift 10s ease-in-out infinite",
+              }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                width: 380,
+                height: 380,
+                top: 120,
+                right: -100,
+                borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(221, 91, 87, 0.18), transparent 70%)",
+                animation: "drift 13s ease-in-out infinite",
+              }}
+            />
           </div>
 
-          {/* Nav */}
-          <nav style={{
-            position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, padding: "14px 28px",
-            display: "flex", justifyContent: "space-between", alignItems: "center",
-            background: `linear-gradient(180deg, ${COLORS.bg}F2 0%, ${COLORS.bg}00 100%)`,
-            backdropFilter: "blur(16px)",
-          }}>
-            <div style={{ cursor: "pointer" }} onClick={() => navigateTo("hero")}><LogoNav /></div>
-            {view !== "hero" && (
-              <div style={{ display: "flex", gap: 6 }}>
-                {PRODUCTS.map((p) => (
-                  <button key={p.id} onClick={() => navigateTo("detail", p)} style={{
-                    background: activeProduct?.id === p.id ? p.bgAccent : "rgba(255,255,255,0.04)",
-                    border: `1px solid ${activeProduct?.id === p.id ? p.color + "40" : COLORS.border}`,
-                    color: activeProduct?.id === p.id ? p.color : COLORS.textMuted,
-                    padding: "7px 16px", borderRadius: 8, fontSize: 13, fontWeight: 500,
-                    cursor: "pointer", fontFamily: "inherit", transition: "all 0.25s ease",
-                  }}>{p.name}</button>
-                ))}
+          <nav
+            style={{
+              position: "sticky",
+              top: 0,
+              zIndex: 20,
+              padding: isMobile ? "18px 18px" : "20px 32px",
+              backdropFilter: "blur(16px)",
+              background: "rgba(248, 246, 242, 0.78)",
+              borderBottom: "1px solid rgba(50, 63, 78, 0.08)",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: 1240,
+                margin: "0 auto",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 18,
+              }}
+            >
+              <div style={{ cursor: "pointer" }} onClick={() => navigateTo("hero")}>
+                <BrandWordmark compact />
               </div>
-            )}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  justifyContent: "flex-end",
+                  gap: 10,
+                }}
+              >
+                {view !== "hero" && PRODUCTS.map((product) => (
+                  <button
+                    key={product.id}
+                    onClick={() => navigateTo("detail", product)}
+                    style={{
+                      border: `1px solid ${active?.id === product.id ? product.accent : "rgba(50, 63, 78, 0.14)"}`,
+                      background: active?.id === product.id ? product.accentSoft : "rgba(255,255,255,0.72)",
+                      color: active?.id === product.id ? product.accent : COLORS.denim,
+                      borderRadius: 999,
+                      padding: "10px 16px",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {product.name}
+                  </button>
+                ))}
+                <button
+                  onClick={() => window.open("https://calendly.com/bariatric-centers/bca-discovery-call-baritotalcare", "_blank")}
+                  style={{
+                    border: "none",
+                    background: COLORS.coral,
+                    color: COLORS.white,
+                    borderRadius: 999,
+                    padding: "10px 18px",
+                    fontSize: 13,
+                    fontWeight: 800,
+                    cursor: "pointer",
+                    boxShadow: "0 14px 30px rgba(221, 91, 87, 0.25)",
+                  }}
+                >
+                  Schedule Demo
+                </button>
+              </div>
+            </div>
           </nav>
 
-          {/* Main */}
-          <div style={{
-            position: "relative", zIndex: 2, minHeight: "100vh",
-            display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",
-            padding: "80px 28px 40px",
-            opacity: animateIn ? 1 : 0, transform: animateIn ? "translateY(0)" : "translateY(16px)",
-            transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
-          }}>
-
-            {/* ═══ HERO ═══ */}
+          <main
+            style={{
+              position: "relative",
+              zIndex: 2,
+              maxWidth: 1240,
+              margin: "0 auto",
+              padding: isMobile ? "30px 18px 48px" : "56px 32px 72px",
+              opacity: animateIn ? 1 : 0,
+              transform: animateIn ? "translateY(0)" : "translateY(18px)",
+              transition: "opacity 0.45s ease, transform 0.45s ease",
+            }}
+          >
             {view === "hero" && (
-              <div style={{ textAlign: "center", maxWidth: 780 }}>
-                <div style={{ marginBottom: 32, display: "flex", justifyContent: "center" }}><LogoFull height={44} /></div>
-                <h1 style={{ fontSize: "clamp(32px, 5.5vw, 58px)", fontWeight: 700, lineHeight: 1.12, marginBottom: 24, color: COLORS.text }}>
-                  The Complete Solution for{" "}
-                  <span style={{ background: `linear-gradient(135deg, ${COLORS.teal}, ${COLORS.blue}, ${COLORS.coral})`, backgroundSize: "200% 200%", animation: "gradient-shift 5s ease infinite", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-                    Bariatric Program Management
-                  </span>
-                </h1>
-                <p style={{ fontSize: 18, lineHeight: 1.75, color: COLORS.textMuted, maxWidth: 560, margin: "0 auto 44px" }}>
-                  From the first ad click to five years post-op — one integrated platform that replaces your spreadsheets, fax machines, and guesswork with a purpose-built bariatric CRM.
-                </p>
-                <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-                  <button onClick={() => navigateTo("overview")} style={{
-                    background: `linear-gradient(135deg, ${COLORS.teal}, ${COLORS.tealDark})`,
-                    border: "none", color: COLORS.bg, padding: "15px 36px", borderRadius: 10,
-                    fontSize: 15, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                    transition: "all 0.3s ease", boxShadow: `0 8px 32px ${COLORS.tealGlow}`,
+              <section>
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: isTablet ? "1fr" : "1.08fr 0.92fr",
+                    gap: isTablet ? 26 : 42,
+                    alignItems: "center",
+                    marginBottom: 38,
                   }}
-                  onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"}
-                  onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}
-                  >See How It Works →</button>
-                  <button onClick={() => window.open("https://calendly.com/bariatric-centers/bca-discovery-call-baritotalcare", "_blank")} style={{
-                    background: "rgba(255,255,255,0.05)", border: `1px solid ${COLORS.border}`,
-                    color: COLORS.textMuted, padding: "15px 32px", borderRadius: 10,
-                    fontSize: 15, fontWeight: 500, cursor: "pointer", fontFamily: "inherit", transition: "all 0.3s ease",
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = COLORS.borderHover; e.currentTarget.style.color = COLORS.text; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.color = COLORS.textMuted; }}
-                  >Schedule Demo</button>
-                </div>
-                {/* Pipeline pills */}
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: 64, gap: 0 }}>
-                  {PRODUCTS.map((p, i) => (
-                    <div key={p.id} style={{ display: "flex", alignItems: "center" }}>
-                      <div onClick={() => navigateTo("detail", p)} style={{
-                        padding: "16px 24px", borderRadius: 12, background: p.bgAccent,
-                        border: `1px solid ${p.color}18`, cursor: "pointer", transition: "all 0.3s ease",
-                        textAlign: "center", animation: `slide-up 0.6s ease ${i * 0.12 + 0.3}s both`,
+                >
+                  <div
+                    style={{
+                      background: "rgba(255,255,255,0.72)",
+                      border: "1px solid rgba(50, 63, 78, 0.08)",
+                      borderRadius: 32,
+                      padding: isMobile ? "28px 22px" : "42px 42px 38px",
+                      boxShadow: COLORS.cardShadow,
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 10,
+                        padding: "9px 14px",
+                        borderRadius: 999,
+                        background: "rgba(125, 189, 182, 0.16)",
+                        color: COLORS.hunter,
+                        fontSize: 12,
+                        fontWeight: 800,
+                        letterSpacing: "0.15em",
+                        textTransform: "uppercase",
+                        marginBottom: 24,
                       }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = p.color + "50"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = p.color + "18"; e.currentTarget.style.transform = "translateY(0)"; }}
-                      >
-                        <div style={{ fontSize: 11, fontWeight: 700, color: p.color, letterSpacing: "0.1em" }}>{p.phase}</div>
-                        <div style={{ fontSize: 15, fontWeight: 600, color: COLORS.text, marginTop: 4 }}>{p.name}</div>
-                        <div style={{ fontSize: 11, color: COLORS.textDim, marginTop: 2 }}>{p.tagline.split(" ").slice(0, 3).join(" ")}</div>
-                      </div>
-                      {i < PRODUCTS.length - 1 && (
-                        <svg width="48" height="20" viewBox="0 0 48 20" style={{ margin: "0 -2px", animation: `slide-up 0.6s ease ${i * 0.12 + 0.4}s both` }}>
-                          <defs>
-                            <linearGradient id={`arr${i}`} x1="0" y1="0" x2="48" y2="0" gradientUnits="userSpaceOnUse">
-                              <stop stopColor={PRODUCTS[i].color} stopOpacity="0.5" />
-                              <stop offset="1" stopColor={PRODUCTS[i + 1].color} stopOpacity="0.5" />
-                            </linearGradient>
-                          </defs>
-                          <line x1="4" y1="10" x2="38" y2="10" stroke={`url(#arr${i})`} strokeWidth="1.5" />
-                          <polyline points="34,5 40,10 34,15" fill="none" stroke={PRODUCTS[i + 1].color} strokeWidth="1.5" strokeOpacity="0.5" />
-                        </svg>
-                      )}
+                    >
+                      Purpose-built platform
                     </div>
-                  ))}
+                    <BrandWordmark />
+                    <h1
+                      style={{
+                        margin: "28px 0 18px",
+                        fontFamily: FONT_DISPLAY,
+                        fontSize: "clamp(48px, 7vw, 86px)",
+                        lineHeight: 0.92,
+                        letterSpacing: "-0.05em",
+                        color: COLORS.denim,
+                      }}
+                    >
+                      The complete solution for bariatric program management.
+                    </h1>
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: isMobile ? 18 : 21,
+                        lineHeight: 1.7,
+                        color: COLORS.charcoal,
+                        maxWidth: 760,
+                      }}
+                    >
+                      From the first ad click to long-term follow-up - one integrated platform that replaces spreadsheets, fax machines, and guesswork with a purpose-built bariatric CRM.
+                    </p>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 30 }}>
+                      <button
+                        onClick={() => navigateTo("overview")}
+                        style={{
+                          border: "none",
+                          background: COLORS.coral,
+                          color: COLORS.white,
+                          borderRadius: 16,
+                          padding: "16px 24px",
+                          fontSize: 15,
+                          fontWeight: 800,
+                          cursor: "pointer",
+                          boxShadow: "0 18px 36px rgba(221, 91, 87, 0.28)",
+                        }}
+                      >
+                        See How It Works
+                      </button>
+                      <button
+                        onClick={() => window.open("https://calendly.com/bariatric-centers/bca-discovery-call-baritotalcare", "_blank")}
+                        style={{
+                          border: `1px solid ${COLORS.hunter}`,
+                          background: "transparent",
+                          color: COLORS.hunter,
+                          borderRadius: 16,
+                          padding: "16px 24px",
+                          fontSize: 15,
+                          fontWeight: 700,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Book a live walkthrough
+                      </button>
+                    </div>
+                  </div>
+
+                  <div
+                    style={{
+                      background: `linear-gradient(180deg, rgba(39, 66, 62, 0.94), rgba(50, 63, 78, 0.98))`,
+                      borderRadius: 34,
+                      padding: isMobile ? "28px 22px" : "38px 34px",
+                      color: COLORS.white,
+                      boxShadow: "0 36px 64px rgba(39, 66, 62, 0.18)",
+                    }}
+                  >
+                    <div style={{ color: COLORS.mist, fontSize: 12, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                      One connected operating system
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 18,
+                        display: "grid",
+                        gridTemplateColumns: "1fr",
+                        gap: 18,
+                      }}
+                    >
+                      {PRODUCTS.map((product, index) => (
+                        <div key={product.id}>
+                          <button
+                            onClick={() => navigateTo("detail", product)}
+                            style={{
+                              width: "100%",
+                              textAlign: "left",
+                              display: "grid",
+                              gridTemplateColumns: isMobile ? "1fr" : "92px 1fr auto",
+                              gap: 18,
+                              alignItems: "center",
+                              border: `1px solid ${product.accent}55`,
+                              background: "rgba(255,255,255,0.06)",
+                              color: COLORS.white,
+                              borderRadius: 24,
+                              padding: isMobile ? "18px" : "22px 22px 22px 20px",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <div>
+                              <div style={{ fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: product.accent, fontWeight: 800 }}>
+                                {product.phase}
+                              </div>
+                              <div style={{ marginTop: 8, fontSize: 34, fontFamily: FONT_DISPLAY, lineHeight: 0.9 }}>{product.phaseNum}</div>
+                            </div>
+                            <div>
+                              <div style={{ fontFamily: FONT_DISPLAY, fontSize: isMobile ? 34 : 38, lineHeight: 0.95 }}>{product.name}</div>
+                              <div style={{ marginTop: 8, fontSize: isMobile ? 15 : 17, lineHeight: 1.5, color: COLORS.mist }}>
+                                {product.tagline}
+                              </div>
+                            </div>
+                            <div style={{ fontSize: 14, fontWeight: 800, color: product.accent }}>
+                              Explore →
+                            </div>
+                          </button>
+                          {index < PRODUCTS.length - 1 && (
+                            <div
+                              style={{
+                                width: 2,
+                                height: isMobile ? 28 : 34,
+                                background: `linear-gradient(180deg, ${product.accent}, ${PRODUCTS[index + 1].accent})`,
+                                margin: "0 auto",
+                                opacity: 0.85,
+                              }}
+                            />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    <div
+                      style={{
+                        marginTop: 18,
+                        paddingTop: 16,
+                        borderTop: "1px solid rgba(255,255,255,0.12)",
+                        fontSize: 13,
+                        lineHeight: 1.6,
+                        color: COLORS.mist,
+                      }}
+                    >
+                      Explore each product to see its capabilities and ROI.
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </section>
             )}
 
-            {/* ═══ OVERVIEW ═══ */}
             {view === "overview" && (
-              <div style={{ width: "100%", maxWidth: 960 }}>
-                <div style={{ textAlign: "center", marginBottom: 48 }}>
-                  <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: COLORS.teal, letterSpacing: "0.18em", marginBottom: 14, textTransform: "uppercase" }}>The Bariatric Funnel</div>
-                  <h2 style={{ fontSize: "clamp(26px, 3.5vw, 40px)", fontWeight: 700, lineHeight: 1.2, color: COLORS.text }}>Three products. One seamless patient journey.</h2>
-                  <p style={{ fontSize: 15, color: COLORS.textMuted, marginTop: 10, maxWidth: 520, margin: "10px auto 0" }}>Click any product to explore capabilities and ROI.</p>
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  {PRODUCTS.map((p, i) => (
-                    <div key={p.id} onClick={() => navigateTo("detail", p)} style={{
-                      background: COLORS.bgCard, border: `1px solid ${COLORS.border}`,
-                      borderRadius: 14, padding: "28px 32px", cursor: "pointer",
-                      display: "grid", gridTemplateColumns: "80px 1fr 200px", gap: 28, alignItems: "center",
-                      position: "relative", overflow: "hidden",
-                      transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
-                      animation: `slide-up 0.5s ease ${i * 0.12}s both`,
+              <section>
+                <div style={{ textAlign: "center", maxWidth: 860, margin: "0 auto 34px" }}>
+                  <div style={{ color: COLORS.teal, fontSize: 12, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                    The bariatric funnel
+                  </div>
+                  <h2
+                    style={{
+                      margin: "14px 0 12px",
+                      fontFamily: FONT_DISPLAY,
+                      fontSize: "clamp(42px, 6vw, 68px)",
+                      lineHeight: 0.95,
+                      letterSpacing: "-0.05em",
+                      color: COLORS.denim,
                     }}
-                    onMouseEnter={e => { e.currentTarget.style.borderColor = p.color + "35"; e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = `0 12px 40px ${p.glowColor}`; }}
-                    onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+                  >
+                    Three products. One integrated patient journey.
+                  </h2>
+                  <p style={{ margin: 0, fontSize: 19, lineHeight: 1.7, color: COLORS.charcoal }}>
+                    Explore each product to see its capabilities and ROI.
+                  </p>
+                </div>
+
+                <div style={{ display: "grid", gap: 22 }}>
+                  {PRODUCTS.map((product, index) => (
+                    <button
+                      key={product.id}
+                      onClick={() => navigateTo("detail", product)}
+                      style={{
+                        width: "100%",
+                        textAlign: "left",
+                        display: "grid",
+                        gridTemplateColumns: isTablet ? "1fr" : "210px 1.2fr 0.9fr",
+                        gap: 24,
+                        padding: isMobile ? "24px 20px" : "30px 30px 30px 26px",
+                        borderRadius: 30,
+                        border: `1px solid ${product.accent}22`,
+                        background: "rgba(255,255,255,0.86)",
+                        boxShadow: COLORS.cardShadow,
+                        cursor: "pointer",
+                      }}
                     >
-                      <div style={{ position: "absolute", top: 0, left: 0, width: 3, height: "100%", background: `linear-gradient(180deg, ${p.color}80, ${p.color}20)` }} />
-                      <div style={{ textAlign: "center" }}>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 28, fontWeight: 700, color: p.color, opacity: 0.25 }}>{p.phaseNum}</div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: p.color, letterSpacing: "0.15em", marginTop: 2 }}>{p.phase}</div>
+                      <div
+                        style={{
+                          borderRadius: 24,
+                          padding: isMobile ? "18px 16px" : "24px 22px",
+                          background: `linear-gradient(180deg, ${product.accentSoft}, rgba(255,255,255,0.92))`,
+                          border: `1px solid ${product.accent}20`,
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                          minHeight: 190,
+                        }}
+                      >
+                        <div>
+                          <div style={{ color: product.accent, fontSize: 12, fontWeight: 800, letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                            Stage {product.phaseNum}
+                          </div>
+                          <div style={{ marginTop: 10, fontFamily: FONT_DISPLAY, fontSize: 42, lineHeight: 0.92, color: COLORS.denim }}>
+                            {product.name}
+                          </div>
+                          <div style={{ marginTop: 10, fontSize: 17, lineHeight: 1.55, color: COLORS.charcoal }}>
+                            {product.tagline}
+                          </div>
+                        </div>
+                        <div style={{ marginTop: 20, color: product.accent, fontSize: 14, fontWeight: 800 }}>
+                          {product.phase} the patient journey
+                        </div>
                       </div>
+
                       <div>
-                        <h3 style={{ fontSize: 22, fontWeight: 700, color: COLORS.text, marginBottom: 6 }}>
-                          {p.name}<span style={{ fontSize: 14, fontWeight: 400, color: COLORS.textMuted, marginLeft: 10 }}>{p.tagline}</span>
-                        </h3>
-                        <p style={{ fontSize: 14, lineHeight: 1.65, color: COLORS.textMuted }}>{p.solve.slice(0, 160)}…</p>
+                        <div style={{ color: COLORS.denim, fontSize: 13, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                          Why it matters
+                        </div>
+                        <p style={{ margin: "12px 0 20px", fontSize: 18, lineHeight: 1.8, color: COLORS.charcoal }}>
+                          {product.solution}
+                        </p>
+                        <div style={{ display: "grid", gap: 10 }}>
+                          {product.features.slice(0, 3).map((feature) => (
+                            <div key={feature} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                              <div style={{ width: 9, height: 9, marginTop: 10, borderRadius: "50%", background: product.accent, flexShrink: 0 }} />
+                              <div style={{ fontSize: 16, lineHeight: 1.65, color: COLORS.charcoal }}>{feature}</div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                      <div style={{ display: "flex", gap: 20 }}>
-                        {p.stats.slice(0, 2).map((s, si) => (
-                          <div key={si} style={{ textAlign: "center" }}>
-                            <div style={{ fontSize: 20, fontWeight: 700, color: p.color }}>{s.value}</div>
-                            <div style={{ fontSize: 10, color: COLORS.textDim, maxWidth: 80, lineHeight: 1.3, marginTop: 3 }}>{s.label}</div>
+
+                      <div
+                        style={{
+                          display: "grid",
+                          gridTemplateColumns: isMobile ? "1fr" : "repeat(2, minmax(0, 1fr))",
+                          gap: 14,
+                          alignContent: "start",
+                        }}
+                      >
+                        {product.stats.slice(0, 2).map((stat) => (
+                          <div
+                            key={stat.label}
+                            style={{
+                              borderRadius: 22,
+                              padding: "18px 16px",
+                              background: COLORS.shell,
+                              border: `1px solid ${product.accent}1a`,
+                            }}
+                          >
+                            <div style={{ fontFamily: FONT_DISPLAY, fontSize: 34, lineHeight: 0.92, color: product.accent }}>
+                              {stat.value}
+                            </div>
+                            <div style={{ marginTop: 8, fontSize: 14, lineHeight: 1.55, color: COLORS.charcoal }}>
+                              {stat.label}
+                            </div>
                           </div>
                         ))}
+                        <div
+                          style={{
+                            gridColumn: isMobile ? "auto" : "1 / -1",
+                            borderRadius: 22,
+                            padding: "18px 16px",
+                            background: `linear-gradient(135deg, ${product.accentSoft}, rgba(255,255,255,0.95))`,
+                            border: `1px solid ${product.accent}22`,
+                            color: COLORS.denim,
+                            fontSize: 14,
+                            lineHeight: 1.6,
+                            fontWeight: 700,
+                          }}
+                        >
+                          Open the {product.name} page for the full problem, solution, stats, and capability breakdown.
+                        </div>
                       </div>
-                    </div>
+                    </button>
                   ))}
                 </div>
-                <div style={{
-                  marginTop: 40, padding: "28px 32px", borderRadius: 14,
-                  background: `linear-gradient(135deg, ${COLORS.bgCard}, ${COLORS.bgLight})`,
-                  border: `1px solid ${COLORS.border}`,
-                  display: "grid", gridTemplateColumns: "1fr auto", gap: 24, alignItems: "center",
-                }}>
-                  <div>
-                    <div style={{ fontSize: 16, fontWeight: 600, color: COLORS.text, marginBottom: 6 }}>Your competitors are modernizing. The practices that invest in purpose-built technology today will own the bariatric market tomorrow.</div>
-                    <div style={{ fontSize: 13, color: COLORS.textMuted }}>Modern solutions for the modern bariatric program.</div>
+
+                <div
+                  style={{
+                    marginTop: 24,
+                    display: "grid",
+                    gridTemplateColumns: isTablet ? "1fr" : "1.15fr 0.85fr",
+                    gap: 18,
+                    alignItems: "stretch",
+                  }}
+                >
+                  <div
+                    style={{
+                      borderRadius: 28,
+                      padding: isMobile ? "24px 20px" : "28px 28px",
+                      background: "rgba(255,255,255,0.86)",
+                      border: "1px solid rgba(50, 63, 78, 0.08)",
+                      boxShadow: COLORS.cardShadow,
+                    }}
+                  >
+                    <div style={{ color: COLORS.coral, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                      Stats note
+                    </div>
+                    <div style={{ marginTop: 10, fontSize: 16, lineHeight: 1.7, color: COLORS.charcoal }}>
+                      {STATS_NOTE}
+                    </div>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 4 }}>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 13, color: COLORS.teal }}>BariTotalCare.com</div>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 12, color: COLORS.textDim }}>706.284.3185</div>
-                    <div style={{ fontSize: 11, color: COLORS.textDim }}>care@bcofa.com</div>
+
+                  <div
+                    style={{
+                      borderRadius: 28,
+                      padding: isMobile ? "24px 20px" : "28px 28px",
+                      background: COLORS.denim,
+                      color: COLORS.white,
+                      boxShadow: "0 30px 60px rgba(50, 63, 78, 0.18)",
+                    }}
+                  >
+                    <div style={{ color: COLORS.ocean, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                      Contact
+                    </div>
+                    <div style={{ marginTop: 12, fontFamily: FONT_DISPLAY, fontSize: 34, lineHeight: 0.96 }}>
+                      Ready to see the full platform in action?
+                    </div>
+                    <div style={{ marginTop: 12, fontSize: 16, lineHeight: 1.7, color: COLORS.mist }}>
+                      BariTotalCare brings marketing, intake, clinical coordination, and post-op follow-up into one connected system.
+                    </div>
+                    <div style={{ marginTop: 18, display: "grid", gap: 4, fontSize: 15, lineHeight: 1.6 }}>
+                      <div>BariTotalCare.com</div>
+                      <div>706.284.3185</div>
+                      <div>care@bcofa.com</div>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </section>
             )}
 
-            {/* ═══ DETAIL ═══ */}
-            {view === "detail" && activeProduct && (() => {
-              const p = activeProduct;
-              const pIdx = PRODUCTS.indexOf(p);
-              return (
-                <div style={{ width: "100%", maxWidth: 880 }}>
-                  <button onClick={() => navigateTo("overview")} style={{
-                    background: "rgba(255,255,255,0.04)", border: `1px solid ${COLORS.border}`,
-                    color: COLORS.textMuted, padding: "9px 20px", borderRadius: 8,
-                    fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: "inherit",
-                    marginBottom: 28, transition: "all 0.2s ease",
+            {view === "detail" && (
+              <section>
+                <button
+                  onClick={() => navigateTo("overview")}
+                  style={{
+                    border: `1px solid ${COLORS.denim}20`,
+                    background: "rgba(255,255,255,0.78)",
+                    color: COLORS.denim,
+                    borderRadius: 999,
+                    padding: "10px 16px",
+                    fontSize: 13,
+                    fontWeight: 800,
+                    cursor: "pointer",
+                    marginBottom: 22,
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = COLORS.borderHover; e.currentTarget.style.color = COLORS.text; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.color = COLORS.textMuted; }}
-                  >← Platform Overview</button>
-                  <div style={{ marginBottom: 40 }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12 }}>
-                      <div style={{ width: 48, height: 48, borderRadius: 12, background: p.bgAccent, border: `1px solid ${p.color}20`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24 }}>{p.icon}</div>
-                      <div>
-                        <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: p.color, letterSpacing: "0.18em", textTransform: "uppercase" }}>{p.phaseNum} — {p.phase}</div>
-                        <h2 style={{ fontSize: 36, fontWeight: 700, color: COLORS.text, lineHeight: 1.1 }}>{p.name}</h2>
+                >
+                  ← Back to platform overview
+                </button>
+
+                <div
+                  style={{
+                    borderRadius: 34,
+                    padding: isMobile ? "28px 22px" : "34px 34px 30px",
+                    background: `linear-gradient(135deg, rgba(255,255,255,0.94), ${active.accentSoft})`,
+                    border: `1px solid ${active.accent}24`,
+                    boxShadow: COLORS.cardShadow,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: isTablet ? "1fr" : "1.08fr 0.92fr",
+                      gap: 24,
+                      alignItems: "end",
+                    }}
+                  >
+                    <div>
+                      <div style={{ color: active.accent, fontSize: 12, fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+                        Stage {active.phaseNum} · {active.phase}
                       </div>
-                    </div>
-                    <p style={{ fontSize: 17, color: COLORS.textMuted, lineHeight: 1.6, maxWidth: 640 }}>{p.tagline}</p>
-                    <div style={{ height: 2, background: `linear-gradient(90deg, ${p.color}60, transparent)`, borderRadius: 1, marginTop: 16 }} />
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 32 }}>
-                    <div style={{ padding: 26, borderRadius: 12, background: "rgba(255,80,80,0.03)", border: "1px solid rgba(255,80,80,0.10)" }}>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: "#FF6B6B", letterSpacing: "0.15em", marginBottom: 10, textTransform: "uppercase" }}>⚠ The Problem Today</div>
-                      <p style={{ fontSize: 14, lineHeight: 1.7, color: COLORS.textMuted }}>{p.pain}</p>
-                    </div>
-                    <div style={{ padding: 26, borderRadius: 12, background: p.bgAccent, border: `1px solid ${p.color}15` }}>
-                      <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: p.color, letterSpacing: "0.15em", marginBottom: 10, textTransform: "uppercase" }}>✦ The BariTotalCare Solution</div>
-                      <p style={{ fontSize: 14, lineHeight: 1.7, color: COLORS.textMuted }}>{p.solve}</p>
-                    </div>
-                  </div>
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14, marginBottom: 32 }}>
-                    {p.stats.map((s, i) => (
-                      <div key={i} style={{
-                        padding: 24, borderRadius: 12, textAlign: "center",
-                        background: COLORS.bgCard, border: `1px solid ${COLORS.border}`,
-                        transition: "all 0.3s ease", animation: `slide-up 0.4s ease ${i * 0.08}s both`,
-                      }}
-                      onMouseEnter={e => e.currentTarget.style.borderColor = p.color + "30"}
-                      onMouseLeave={e => e.currentTarget.style.borderColor = COLORS.border}
+                      <h2
+                        style={{
+                          margin: "14px 0 10px",
+                          fontFamily: FONT_DISPLAY,
+                          fontSize: "clamp(48px, 7vw, 78px)",
+                          lineHeight: 0.9,
+                          letterSpacing: "-0.05em",
+                          color: COLORS.denim,
+                        }}
                       >
-                        <div style={{ fontSize: 28, fontWeight: 700, color: p.color, marginBottom: 6 }}>{s.value}</div>
-                        <div style={{ fontSize: 12, color: COLORS.textMuted, lineHeight: 1.4 }}>{s.label}</div>
+                        {active.name}
+                      </h2>
+                      <p style={{ margin: 0, fontSize: isMobile ? 19 : 22, lineHeight: 1.7, color: COLORS.charcoal }}>
+                        {active.tagline}
+                      </p>
+                    </div>
+                    <div
+                      style={{
+                        borderRadius: 26,
+                        background: COLORS.white,
+                        border: `1px solid ${active.accent}1e`,
+                        padding: isMobile ? "20px 18px" : "22px 22px",
+                      }}
+                    >
+                      <div style={{ color: active.accent, fontSize: 12, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                        Product promise
                       </div>
-                    ))}
+                      <div style={{ marginTop: 10, fontSize: 18, lineHeight: 1.8, color: COLORS.charcoal }}>
+                        {active.solution}
+                      </div>
+                    </div>
                   </div>
-                  <div style={{ padding: 28, borderRadius: 12, background: COLORS.bgCard, border: `1px solid ${COLORS.border}`, marginBottom: 36 }}>
-                    <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: COLORS.textDim, letterSpacing: "0.15em", marginBottom: 18, textTransform: "uppercase" }}>Key Capabilities</div>
-                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-                      {p.features.map((f, i) => (
-                        <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                          <div style={{ width: 6, height: 6, borderRadius: "50%", background: p.color, marginTop: 7, flexShrink: 0, boxShadow: `0 0 8px ${p.color}40` }} />
-                          <span style={{ fontSize: 13, lineHeight: 1.55, color: COLORS.textMuted }}>{f}</span>
+                </div>
+
+                <div
+                  style={{
+                    marginTop: 22,
+                    display: "grid",
+                    gridTemplateColumns: isTablet ? "1fr" : "1fr 1fr",
+                    gap: 18,
+                  }}
+                >
+                  <div
+                    style={{
+                      borderRadius: 28,
+                      padding: isMobile ? "24px 20px" : "28px 28px",
+                      background: "rgba(255,255,255,0.88)",
+                      border: "1px solid rgba(221, 91, 87, 0.18)",
+                      boxShadow: COLORS.cardShadow,
+                    }}
+                  >
+                    <div style={{ color: COLORS.coral, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                      The problem today
+                    </div>
+                    <div style={{ marginTop: 16, display: "grid", gap: 14 }}>
+                      {active.painPoints.map((point) => (
+                        <div key={point} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                          <div
+                            style={{
+                              width: 12,
+                              height: 12,
+                              borderRadius: "50%",
+                              marginTop: 8,
+                              background: COLORS.coral,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <div style={{ fontSize: 18, lineHeight: 1.7, color: COLORS.charcoal }}>{point}</div>
                         </div>
                       ))}
                     </div>
                   </div>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 18, borderTop: `1px solid ${COLORS.border}` }}>
-                    {pIdx > 0 ? (
-                      <button onClick={() => navigateTo("detail", PRODUCTS[pIdx - 1])} style={{
-                        background: "rgba(255,255,255,0.04)", border: `1px solid ${COLORS.border}`,
-                        color: COLORS.textMuted, padding: "10px 22px", borderRadius: 8,
-                        fontSize: 13, fontWeight: 500, cursor: "pointer", fontFamily: "inherit", transition: "all 0.2s ease",
-                      }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = COLORS.borderHover; e.currentTarget.style.color = COLORS.text; }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = COLORS.border; e.currentTarget.style.color = COLORS.textMuted; }}
-                      >← {PRODUCTS[pIdx - 1].name}</button>
-                    ) : <div />}
-                    <button onClick={() => pIdx < PRODUCTS.length - 1 ? navigateTo("detail", PRODUCTS[pIdx + 1]) : navigateTo("overview")} style={{
-                      background: `linear-gradient(135deg, ${p.color}, ${p.color}CC)`,
-                      border: "none", color: COLORS.bg, padding: "10px 24px", borderRadius: 8,
-                      fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "inherit",
-                      transition: "all 0.25s ease", boxShadow: `0 6px 24px ${p.glowColor}`,
+
+                  <div
+                    style={{
+                      borderRadius: 28,
+                      padding: isMobile ? "24px 20px" : "28px 28px",
+                      background: `linear-gradient(180deg, ${active.accentSoft}, rgba(255,255,255,0.9))`,
+                      border: `1px solid ${active.accent}20`,
+                      boxShadow: COLORS.cardShadow,
                     }}
-                    onMouseEnter={e => e.currentTarget.style.transform = "translateY(-2px)"}
-                    onMouseLeave={e => e.currentTarget.style.transform = "translateY(0)"}
-                    >
-                      {pIdx < PRODUCTS.length - 1 ? `Next: ${PRODUCTS[pIdx + 1].name} →` : "See Full Platform →"}
-                    </button>
+                  >
+                    <div style={{ color: active.accent, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                      The BariTotalCare solution
+                    </div>
+                    <div style={{ marginTop: 14, fontSize: 19, lineHeight: 1.85, color: COLORS.charcoal }}>
+                      {active.solution}
+                    </div>
                   </div>
                 </div>
-              );
-            })()}
-          </div>
 
-          {/* Footer */}
-          <div style={{
-            position: "fixed", bottom: 12, left: 0, right: 0, textAlign: "center",
-            fontFamily: "'DM Mono', monospace", fontSize: 10, color: COLORS.textDim,
-            letterSpacing: "0.1em", opacity: 0.5, zIndex: 10,
-          }}>BARITOTALCARE.COM · BARIATRIC CENTERS OF AMERICA · SOC 2 COMPLIANT</div>
+                <div style={{ marginTop: 22 }}>
+                  <div style={{ color: COLORS.denim, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 14 }}>
+                    Sample impact metrics
+                  </div>
+                  <div
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: isMobile ? "1fr" : "repeat(3, minmax(0, 1fr))",
+                      gap: 16,
+                    }}
+                  >
+                    {active.stats.map((stat) => (
+                      <div
+                        key={stat.label}
+                        style={{
+                          borderRadius: 26,
+                          padding: "24px 22px",
+                          background: "rgba(255,255,255,0.9)",
+                          border: `1px solid ${active.accent}1e`,
+                          boxShadow: COLORS.cardShadow,
+                          textAlign: isMobile ? "left" : "center",
+                        }}
+                      >
+                        <div
+                          style={{
+                            fontFamily: FONT_DISPLAY,
+                            fontSize: isMobile ? 44 : 52,
+                            lineHeight: 0.88,
+                            color: active.accent,
+                          }}
+                        >
+                          {stat.value}
+                        </div>
+                        <div style={{ marginTop: 10, fontSize: 17, lineHeight: 1.6, color: COLORS.charcoal }}>
+                          {stat.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: 10, fontSize: 13, lineHeight: 1.7, color: COLORS.teal }}>
+                    {STATS_NOTE}
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    marginTop: 22,
+                    borderRadius: 28,
+                    padding: isMobile ? "24px 20px" : "30px 30px",
+                    background: COLORS.denim,
+                    color: COLORS.white,
+                    boxShadow: "0 34px 60px rgba(50, 63, 78, 0.18)",
+                  }}
+                >
+                  <div style={{ color: COLORS.ocean, fontSize: 12, fontWeight: 800, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+                    Key capabilities
+                  </div>
+                  <div
+                    style={{
+                      marginTop: 18,
+                      display: "grid",
+                      gridTemplateColumns: isTablet ? "1fr" : "1fr 1fr",
+                      gap: 16,
+                    }}
+                  >
+                    {active.features.map((feature) => (
+                      <div
+                        key={feature}
+                        style={{
+                          display: "flex",
+                          gap: 14,
+                          alignItems: "flex-start",
+                          padding: "18px 18px",
+                          borderRadius: 22,
+                          background: "rgba(255,255,255,0.06)",
+                          border: "1px solid rgba(255,255,255,0.08)",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: 10,
+                            height: 10,
+                            marginTop: 9,
+                            borderRadius: "50%",
+                            background: active.accent,
+                            flexShrink: 0,
+                          }}
+                        />
+                        <div style={{ fontSize: 17, lineHeight: 1.65, color: COLORS.white }}>
+                          {feature}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    marginTop: 22,
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "space-between",
+                    gap: 14,
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      const currentIndex = PRODUCTS.findIndex((product) => product.id === active.id);
+                      if (currentIndex > 0) navigateTo("detail", PRODUCTS[currentIndex - 1]);
+                    }}
+                    disabled={PRODUCTS[0].id === active.id}
+                    style={{
+                      border: `1px solid ${COLORS.denim}20`,
+                      background: "rgba(255,255,255,0.82)",
+                      color: PRODUCTS[0].id === active.id ? "rgba(50, 63, 78, 0.38)" : COLORS.denim,
+                      borderRadius: 999,
+                      padding: "12px 18px",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      cursor: PRODUCTS[0].id === active.id ? "default" : "pointer",
+                    }}
+                  >
+                    ← Previous product
+                  </button>
+                  <button
+                    onClick={() => {
+                      const currentIndex = PRODUCTS.findIndex((product) => product.id === active.id);
+                      if (currentIndex < PRODUCTS.length - 1) {
+                        navigateTo("detail", PRODUCTS[currentIndex + 1]);
+                      } else {
+                        navigateTo("overview");
+                      }
+                    }}
+                    style={{
+                      border: "none",
+                      background: COLORS.coral,
+                      color: COLORS.white,
+                      borderRadius: 999,
+                      padding: "12px 18px",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      cursor: "pointer",
+                      boxShadow: "0 14px 30px rgba(221, 91, 87, 0.24)",
+                    }}
+                  >
+                    {PRODUCTS[PRODUCTS.length - 1].id === active.id ? "Back to platform overview →" : "Next product →"}
+                  </button>
+                </div>
+              </section>
+            )}
+          </main>
+
+          <footer
+            style={{
+              maxWidth: 1240,
+              margin: "0 auto",
+              padding: isMobile ? "0 18px 36px" : "0 32px 44px",
+              color: COLORS.denim,
+            }}
+          >
+            <div
+              style={{
+                borderTop: "1px solid rgba(50, 63, 78, 0.12)",
+                paddingTop: 18,
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between",
+                gap: 10,
+                fontSize: 12,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                fontWeight: 700,
+              }}
+            >
+              <span>BariTotalCare.com</span>
+              <span>Bariatric Centers of America</span>
+              <span>One connected bariatric growth engine</span>
+            </div>
+          </footer>
         </div>
       );
     }
