@@ -106,13 +106,14 @@
           "New leads sit untouched while staff manually triage who should call back.",
           "Your team is doing qualification and nurture work by hand.",
         ],
+        promise:
+          "Turn every digital touchpoint into a qualified consult. BariLead automates lead capture, qualification, and nurture — so your team focuses on patients, not paperwork.",
         solution:
-          "BariLead connects your paid advertising, website scheduling, and referral sources directly to your CRM. Every lead is captured, qualified, and nurtured automatically with AI-powered intake calls, personalized campaigns, and marketing automation that works around the clock.",
+          "BariLead connects your paid advertising, website scheduling, and referral sources directly to your CRM. Every lead is captured, qualified, and nurtured automatically with AI-powered intake calls, personalized AI-driven SMS and email marketing nurture drip campaigns, and around-the-clock automation built for bariatric programs.",
         features: [
           "Paid advertising integration with automated lead routing",
           "Conversational AI for patient intake calls",
           "AI-generated email and SMS campaign automation",
-          "Smart scheduling synced to BariNav",
           "Physician referral portal",
           "Campaign ROI tracking by source and channel",
         ],
@@ -137,15 +138,16 @@
           "Following up on pre-op requirements is tedious and time-consuming.",
           "Manual tasks pile up with no automation to simplify the workflow.",
         ],
+        promise:
+          "Give your care team complete visibility over every patient’s journey — from first consult through surgery — so no one slips through the cracks.",
         solution:
           "BariNav is the CRM purpose-built for bariatric care. From the first consult through surgery, medical weight loss, and nutrition therapy, it tracks milestones, manages tasks, and ensures compliance, giving your team complete oversight of each patient’s journey.",
         features: [
           "Prospect to patient to program workflow engine",
-          "Insurance verification and pre-op requirement assignment",
+          "AI-powered insurance verification and patient navigation",
           "Automated patient messaging by email and SMS",
           "Customizable medical, surgical, and nutritional program pathways",
           "Medication management and prescription tracking",
-          "COE accreditation tracking and compliance",
         ],
       },
       {
@@ -163,11 +165,13 @@
           { value: "3x", label: "improvement in follow-up rates" },
         ],
         painPoints: [
-          "Post-op patients vanish after 90 days.",
+          "Post-op patients fail to consistently follow up.",
           "Follow-up visits and progress go untracked.",
           "Patient success and weight outcomes are unknown.",
           "Additional revenue opportunities are left on the table.",
         ],
+        promise:
+          "Keep every post-op patient connected and on track. BariSuccess turns real-time biometric data into proactive outreach — before problems escalate and revenue walks out the door.",
         solution:
           "BariSuccess equips every patient with a connected scale that updates weight, BMI, and body composition data directly in BariTotalCare, giving your team a clear view of patient progress. Your team sees trends in real time, automated workflows re-engage patients before problems escalate, and outcomes data strengthens your payer negotiations.",
         features: [
@@ -175,7 +179,7 @@
           "Weight, BMI, and body composition trend dashboards",
           "Automated check-in and re-engagement workflows",
           "Remote patient monitoring billing support",
-          "RVU wallet for tracking provider productivity",
+          "Mine post-op patient data for follow-up opportunities",
           "Outcomes reporting for payer negotiations",
         ],
       },
@@ -516,18 +520,18 @@
                             }}
                           >
                             <div>
-                              <div style={{ fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: product.accent, fontWeight: 800 }}>
+                              <div style={{ fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: COLORS.ocean, fontWeight: 800 }}>
                                 {product.phase}
                               </div>
                               <div style={{ marginTop: 8, fontSize: 34, fontFamily: FONT_DISPLAY, lineHeight: 0.9 }}>{product.phaseNum}</div>
                             </div>
                             <div>
                               <div style={{ fontFamily: FONT_DISPLAY, fontSize: isMobile ? 34 : 38, lineHeight: 0.95 }}>{product.name}</div>
-                              <div style={{ marginTop: 8, fontSize: isMobile ? 15 : 17, lineHeight: 1.5, color: COLORS.mist }}>
+                              <div style={{ marginTop: 8, fontSize: isMobile ? 15 : 17, lineHeight: 1.5, color: COLORS.dove }}>
                                 {product.tagline}
                               </div>
                             </div>
-                            <div style={{ fontSize: 14, fontWeight: 800, color: product.accent }}>
+                            <div style={{ fontSize: 14, fontWeight: 800, color: COLORS.ocean }}>
                               Explore →
                             </div>
                           </button>
@@ -817,7 +821,7 @@
                         Product promise
                       </div>
                       <div style={{ marginTop: 10, fontSize: 18, lineHeight: 1.8, color: COLORS.charcoal }}>
-                        {active.solution}
+                        {active.promise}
                       </div>
                     </div>
                   </div>
